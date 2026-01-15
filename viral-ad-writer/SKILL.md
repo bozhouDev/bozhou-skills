@@ -29,9 +29,9 @@ description: Use when writing sponsored social media posts for brands, especiall
    ↓
 2. 分析产品类型 → 选择对应案例库
    ↓
-3. 读取案例 + 模板
+3. 读取案例（从中学习模式）
    ↓
-4. 生成 3 个不同风格版本
+4. 生成推文（默认 1 版本，用户要求时再加）
    ↓
 5. 自检（对照禁止清单）
 ```
@@ -51,11 +51,12 @@ description: Use when writing sponsored social media posts for brands, especiall
 
 | 产品类型 | 读取文件 | 何时使用 |
 |----------|----------|----------|
+| **自产验证** | `references/my-posts.md` | **优先读**，这是你自己验证有效的案例 |
 | **AI 工具** | `references/examples-ai-tools.md` | ChatGPT 类、设计工具、写作助手 |
 | **App 应用** | `references/examples-apps.md` | 移动应用、SaaS 产品、效率工具 |
 | **在线课程** | `references/examples-courses.md` | 知识付费、训练营、教程 |
 | **通用参考** | `references/core-examples.md` | 任何情况都先读此文件 |
-| **可复用模板** | `references/templates.md` | 提取结构时使用 |
+| **附录：模板** | `references/templates.md` | 可选，案例不足时参考结构 |
 
 ## Implementation
 
@@ -71,26 +72,22 @@ description: Use when writing sponsored social media posts for brands, especiall
 
 ```markdown
 # 工作流程
-1. **必读**：先读 `references/core-examples.md`（10 条精选案例）
+1. **必读**：先读 `references/core-examples.md`（精选案例）
 2. **按需读**：根据产品类型，读对应的分类案例文件
-3. **提取模板**：从 `references/templates.md` 找到适配的结构
+3. **可选**：案例不足时，参考 `references/templates.md` 的结构
 ```
 
 ### Step 3: 生成推文
 
-输出 3 个版本，每个版本使用不同策略：
+**默认输出 1 个版本**，选择最适合该产品的策略：
 
-**版本 1：数据冲击型**
-- 用具体数字/对比制造冲击
-- 适合有明确效率提升的产品
+| 策略 | 何时使用 |
+|------|----------|
+| **数据冲击型** | 产品有明确效率提升数据（时间/成本对比） |
+| **痛点共鸣型** | 产品解决明确痛点问题 |
+| **场景化叙事型** | 产品需要体验感/代入感 |
 
-**版本 2：痛点共鸣型**
-- 从用户痛点切入
-- 适合解决明确问题的产品
-
-**版本 3：场景化叙事型**
-- 用具体使用场景带入
-- 适合需要体验感的产品
+**用户要求多版本时**，再输出 2-3 个不同策略的版本供选择。
 
 ### Step 4: 自检清单
 
@@ -136,11 +133,11 @@ description: Use when writing sponsored social media posts for brands, especiall
 
 ### ❌ 错误 3：生成后不自检
 
-**表现：** 输出 3 个版本后立即提交，未对照禁止清单
+**表现：** 输出后立即提交，未对照禁止清单
 
 **问题：** 可能包含广告腔、夸张词等低质量元素
 
-**解决：** 严格执行 Step 4 自检流程
+**解决：** 生成后默认执行自检，确保符合禁止清单要求
 
 ---
 
@@ -154,7 +151,7 @@ description: Use when writing sponsored social media posts for brands, especiall
 
 ## Output Format
 
-每次生成后，输出格式如下：
+### 默认格式（1 版本）
 
 ```markdown
 ## 📋 Brief 分析
@@ -164,38 +161,34 @@ description: Use when writing sponsored social media posts for brands, especiall
 
 ---
 
-## 📝 版本 1：[策略名称]
+## 📝 推文
 
 [推文内容]
 
-**策略说明：** [为什么用这个策略]
+**策略：** [策略名称] — [为什么用这个策略]
 **参考案例：** [具体案例编号]
+```
 
+### 多版本格式（用户要求时）
+
+在默认格式基础上，增加：
+
+```markdown
 ---
 
-## 📝 版本 2：[策略名称]
+## 📝 备选版本 1：[策略名称]
 
 [推文内容]
 
 **策略说明：** [...]
-**参考案例：** [...]
 
 ---
 
-## 📝 版本 3：[策略名称]
+## 📝 备选版本 2：[策略名称]
 
 [推文内容]
 
 **策略说明：** [...]
-**参考案例：** [...]
-
----
-
-## ✅ 自检结果
-- [x] 前 10 字吸引力 ✓
-- [x] 包含具体数字 ✓
-- [x] 无广告腔 ✓
-- [x] CTA 自然 ✓
 ```
 
 ## Real-World Impact
