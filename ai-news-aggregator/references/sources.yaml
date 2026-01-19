@@ -1,0 +1,206 @@
+# AI News Sources Configuration
+# Type: rss | api | web
+# Frequency: daily | weekly
+
+sources:
+  # AI News & Updates
+  - name: "TLDR AI"
+    url: "https://tldr.tech/api/latest/ai"
+    type: "api"
+    frequency: "daily"
+    parser: "tldr_api"
+
+  - name: "Ben's Bites"
+    url: "https://www.bensbites.com/archive"
+    type: "web"
+    frequency: "daily"
+    parser: "bensbites_web"
+
+  - name: "Hugging Face Papers"
+    url: "https://huggingface.co/papers"
+    type: "web"
+    frequency: "daily"
+    parser: "huggingface_web"
+    min_votes: 20
+
+  - name: "NLP Newsletter"
+    url: "https://nlp.elvissaravia.com"
+    type: "web"
+    frequency: "weekly"
+    parser: "generic_web"
+
+  - name: "Interconnects"
+    url: "https://interconnects.ai"
+    type: "web"
+    frequency: "daily"
+    parser: "generic_web"
+
+  - name: "One Useful Thing"
+    url: "https://www.oneusefulthing.org"
+    type: "web"
+    frequency: "daily"
+    parser: "generic_web"
+
+  - name: "Why Try AI"
+    url: "https://www.whytryai.com"
+    type: "web"
+    frequency: "daily"
+    parser: "generic_web"
+
+  - name: "The Rundown AI"
+    url: "https://rss.beehiiv.com/feeds/FkuXDLbjXy.xml"
+    type: "rss"
+    frequency: "daily"
+
+  - name: "The Neuron Daily"
+    url: "https://rss.beehiiv.com/feeds/TheNeuron.xml"
+    type: "rss"
+    frequency: "daily"
+
+  - name: "AI Leadership Edge"
+    url: "https://theaileadershipedge.substack.com/feed"
+    type: "rss"
+    frequency: "daily"
+
+  - name: "ChinAI Newsletter"
+    url: "https://chinai.substack.com/feed"
+    type: "rss"
+    frequency: "weekly"
+
+  - name: "Memia"
+    url: "https://memia.substack.com/feed"
+    type: "rss"
+    frequency: "weekly"
+
+  - name: "AI to ROI"
+    url: "https://ai2roi.substack.com/feed"
+    type: "rss"
+    frequency: "daily"
+
+  - name: "Nate's Newsletter"
+    url: "https://natesnewsletter.substack.com/feed"
+    type: "rss"
+    frequency: "daily"
+
+  - name: "AI Changes Everything"
+    url: "https://patmcguinness.substack.com/feed"
+    type: "rss"
+    frequency: "daily"
+
+  - name: "KDnuggets AI"
+    url: "https://www.kdnuggets.com/tag/artificial-intelligence"
+    type: "web"
+    frequency: "daily"
+    parser: "kdnuggets_web"
+
+  # Podcasts
+  - name: "Lex Fridman Podcast"
+    url: "https://lexfridman.com/feed/podcast"
+    type: "rss"
+    frequency: "weekly"
+
+  - name: "Cognitive Revolution"
+    url: "https://feeds.megaphone.fm/cognitive-revolution"
+    type: "rss"
+    frequency: "weekly"
+
+  - name: "80,000 Hours Podcast"
+    url: "https://feeds.transistor.fm/80000-hours"
+    type: "rss"
+    frequency: "weekly"
+
+  - name: "Latent Space Podcast"
+    url: "https://latent.space/feed"
+    type: "rss"
+    frequency: "weekly"
+
+  # Aggregators
+  - name: "Hacker News"
+    url: "https://news.ycombinator.com"
+    type: "web"
+    frequency: "daily"
+    parser: "hackernews_web"
+    limit: 8
+
+  - name: "Product Hunt"
+    url: "https://www.producthunt.com"
+    type: "web"
+    frequency: "daily"
+    parser: "producthunt_web"
+
+  - name: "HackerNoon Life Hacking"
+    url: "https://hackernoon.com/c/life-hacking"
+    type: "web"
+    frequency: "daily"
+    parser: "hackernoon_web"
+
+  - name: "HackerNoon Writing"
+    url: "https://hackernoon.com/c/writing"
+    type: "web"
+    frequency: "daily"
+    parser: "hackernoon_web"
+
+  - name: "HackerNoon Product Management"
+    url: "https://hackernoon.com/c/product-management"
+    type: "web"
+    frequency: "daily"
+    parser: "hackernoon_web"
+
+  # Thought & Writing
+  - name: "Wait But Why"
+    url: "https://waitbutwhy.com"
+    type: "web"
+    frequency: "weekly"
+    parser: "generic_web"
+
+  - name: "James Clear 3-2-1"
+    url: "https://jamesclear.com/3-2-1"
+    type: "web"
+    frequency: "weekly"
+    parser: "jamesclear_web"
+
+  - name: "Farnam Street Brain Food"
+    url: "https://fs.blog/brain-food"
+    type: "web"
+    frequency: "weekly"
+    parser: "generic_web"
+
+  - name: "Austin Kleon"
+    url: "https://austinkleon.substack.com/feed"
+    type: "rss"
+    frequency: "weekly"
+
+  - name: "Paul Graham Essays"
+    url: "https://paulgraham.com/articles.html"
+    type: "web"
+    frequency: "weekly"
+    parser: "paulgraham_web"
+
+  - name: "Scott H Young"
+    url: "https://www.scotthyoung.com/blog/articles"
+    type: "web"
+    frequency: "weekly"
+    parser: "generic_web"
+
+  - name: "Readwise Wise"
+    url: "https://wise.readwise.io"
+    type: "web"
+    frequency: "weekly"
+    parser: "readwise_web"
+
+  - name: "Dan Koe Letters"
+    url: "https://thedankoe.com/letters"
+    type: "web"
+    frequency: "weekly"
+    parser: "generic_web"
+
+  # Others
+  - name: "DC The Median"
+    url: "https://dcthemedian.substack.com/feed"
+    type: "rss"
+    frequency: "daily"
+
+  - name: "Mark McNeilly"
+    url: "https://markmcneilly.substack.com/feed"
+    type: "rss"
+    frequency: "daily"
