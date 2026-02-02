@@ -16,16 +16,24 @@ description: |
 python3 scripts/fetch_rss.py
 ```
 
-2. 分析返回的 JSON 数据,筛选有价值的文章
+2. 分析返回的 JSON,筛选有价值的文章
 
-3. 对每篇文章:
+3. **抓取每篇文章原文** (使用 WebFetch),深度阅读后:
    - 翻译标题为中文
-   - 总结核心内容(1-2 句)
+   - 总结核心内容,每篇不超过 500 字
    - 保留原文链接
 
 4. 生成日报文件:
    - 路径: `/Users/xc/my/notes/灵感库/博客日报/YYYY-MM-DD-标题.md`
    - 标题根据当日热点内容提炼
+
+## 翻译规则
+
+技术名词保留英文,不直译:
+- Claude → Claude (不译为"克劳德")
+- Docker, Kubernetes, React, Node.js 等保持原样
+- API, SDK, CLI 等缩写保持原样
+- 公司/产品名: OpenAI, Anthropic, GitHub 等保持原样
 
 ## 日报格式
 
