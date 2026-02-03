@@ -13,7 +13,7 @@ description: |
 
 1. 运行脚本获取 RSS 内容:
 ```bash
-python3 scripts/fetch_rss.py
+python3 /Users/xc/my/notes/.claude/skills/rss-daily-digest/scripts/fetch_rss.py
 ```
 
 2. 分析返回的 JSON,筛选有价值的文章
