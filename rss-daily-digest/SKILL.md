@@ -25,6 +25,7 @@ python3 /Users/xc/my/notes/.claude/skills/rss-daily-digest/scripts/fetch_rss.py
 
 4. 生成日报文件:
    - 路径: `/Users/xc/my/notes/灵感库/博客日报/YYYY-MM-DD-标题.md`
+   - **文件名和日期使用今天的日期**（即执行命令的日期）,不是文章发布日期
    - 标题根据当日热点内容提炼
 
 ## 翻译规则
@@ -60,6 +61,7 @@ python3 /Users/xc/my/notes/.claude/skills/rss-daily-digest/scripts/fetch_rss.py
 
 ## 注意事项
 
+- **CRITICAL**: 日报日期必须使用今天的日期（执行命令时的日期）,不是文章发布日期
 - 若无 24 小时内新文章,告知用户"今日暂无更新"
 - 优先选择有深度的技术文章
 - 标题翻译保持简洁,避免直译
