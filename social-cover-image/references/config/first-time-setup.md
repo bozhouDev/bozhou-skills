@@ -109,6 +109,8 @@ options:
     description: "Standard widescreen - YouTube, presentations, versatile"
   - label: "2.35:1"
     description: "Cinematic widescreen - WeChat article headers, blog posts"
+  - label: "5:2"
+    description: "Extra-wide - X article covers (auto generates 2.35:1 + crops)"
   - label: "1:1"
     description: "Square - Instagram, social cards, square thumbnails"
   - label: "3:4"

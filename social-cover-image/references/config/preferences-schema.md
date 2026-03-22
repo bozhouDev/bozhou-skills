@@ -25,7 +25,7 @@ preferred_text: title-only  # none|title-only|title-subtitle|text-rich
 
 preferred_mood: balanced    # subtle|balanced|bold
 
-default_aspect: "2.35:1"  # 2.35:1|16:9|1:1
+default_aspect: "2.35:1"  # 2.35:1|5:2|16:9|1:1
 
 default_output_dir: imgs-subdir  # imgs-subdir|same-dir|independent
 
@@ -129,12 +129,13 @@ custom_palettes:
 | Value | Description | Best For |
 |-------|-------------|----------|
 | `2.35:1` | Cinematic widescreen | WeChat article headers, blog covers |
+| `5:2` | Extra-wide (auto: generate 2.35:1 + crop) | X article covers, social banners |
 | `16:9` | Standard widescreen | Presentations, video thumbnails |
 | `1:1` | Square | Social media cards, profile images |
 
 Platform guidance:
 - WeChat public account article headers: `2.35:1`
-- X headers: `5:2` target output; crop after generation because the built-in aspect list does not currently include `5:2`
+- X article covers: `5:2` (auto generates at 2.35:1 with safe-zone prompt, then crops via ImageMagick)
 
 ## Custom Palette Fields
 

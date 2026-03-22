@@ -42,7 +42,7 @@ Generate elegant social cover images with 5-dimensional customization.
 | `--text <level>` | none, title-only, title-subtitle, text-rich |
 | `--mood <level>` | subtle, balanced, bold |
 | `--font <name>` | clean, handwritten, serif, display |
-| `--aspect <ratio>` | 16:9 (default), 2.35:1, 4:3, 3:2, 1:1, 3:4 |
+| `--aspect <ratio>` | 16:9 (default), 2.35:1, 5:2, 4:3, 3:2, 1:1, 3:4 |
 | `--lang <code>` | Title language (en, zh, ja, etc.) |
 | `--no-title` | Alias for `--text none` |
 | `--quick` | Skip confirmation, use auto-selection |
@@ -55,7 +55,7 @@ Use platform-specific aspect ratios when the publication target is known:
 | Platform | Recommended Ratio | Notes |
 |----------|-------------------|-------|
 | WeChat article header | `2.35:1` | Best fit for WeChat public account article covers and blog headers |
-| X header / social banner | `5:2` | Platform target ratio; current built-in generator does not output `5:2` directly, so generate a wide image first and crop afterward |
+| X header / social banner | `5:2` | Auto: generates at `2.35:1` with safe-zone prompt, then crops to `5:2` via ImageMagick |
 | General-purpose cover | `16:9` | Good default for mixed channels, slides, and thumbnails |
 | Square social card | `1:1` | Best for square-first social placements |
 
@@ -65,8 +65,8 @@ Examples:
 # WeChat public account article cover
 /social-cover-image article.md --aspect 2.35:1
 
-# X banner workflow: generate wide, then crop to 5:2 in post-processing
-/social-cover-image article.md --aspect 16:9
+# X article cover (auto generates 2.35:1 + crops to 5:2)
+/social-cover-image article.md --aspect 5:2
 ```
 
 ## Five Dimensions
@@ -210,7 +210,20 @@ Save to `prompts/cover.md`. Template: [references/workflow/prompt-template.md](r
 3. **Process references** from prompt frontmatter:
    - `direct` usage → pass via `--ref` flag to image-gen
    - `style`/`palette` → extract traits, append to prompt
-4. On failure: auto-retry once
+4. **5:2 aspect ratio handling** (X article cover):
+   - **Step 3 prompt**: Append safe-zone instruction to prompt body:
+     ```
+     CRITICAL LAYOUT CONSTRAINT: All text, titles, and key visual elements MUST be
+     placed within the vertical center 70% of the image. Leave the top 15% and bottom
+     15% as decorative margins only (background patterns, gradients, or empty space).
+     This is required because the image will be cropped to 5:2 aspect ratio.
+     ```
+   - **Generate** at `--ar 2.35:1` (closest native ratio to 5:2)
+   - **Crop** to 5:2 with ImageMagick:
+     ```bash
+     magick <output_path>/cover.png -gravity center -crop "%[fx:w]x%[fx:w*2/5]+0+0" +repage <output_path>/cover.png
+     ```
+5. On failure: auto-retry once
 
 ### Step 5: Completion Report
 
