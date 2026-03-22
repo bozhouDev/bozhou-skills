@@ -1,0 +1,8 @@
+{
+  "name": "wechat-markdown-editor-scripts",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "wechat-md": "file:./vendor/wechat-md"
+  }
+}

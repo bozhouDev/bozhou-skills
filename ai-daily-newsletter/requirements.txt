@@ -1,0 +1,6 @@
+feedparser
+requests
+beautifulsoup4
+markdown
+playwright
+Pillow

@@ -1,0 +1,256 @@
+/**
+ * MD 字节范主题 (bytedance)
+ * 科技现代风格，简洁利落。
+ */
+
+/* ==================== 容器样式覆盖 ==================== */
+section,
+container {
+  font-family: var(--md-font-family);
+  font-size: var(--md-font-size);
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+  background-color: var(--md-container-bg);
+  padding: 10px 10px;
+}
+
+#output {
+  font-family: var(--md-font-family);
+  font-size: var(--md-font-size);
+  line-height: 1.8;
+  color: #333333;
+}
+
+/* ==================== 一级标题 ==================== */
+h1 {
+  display: block;
+  margin: 24px 0 16px 0;
+  color: #1d7dfa; /* ByteDance Blue */
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+  border-bottom: 2px solid #1d7dfa;
+  padding-bottom: 8px;
+}
+
+/* ==================== 二级标题 ==================== */
+h2 {
+  display: block;
+  margin: 20px 0 12px 0;
+  color: #1d7dfa;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: left;
+  position: relative;
+  padding-left: 12px;
+}
+
+h2::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 18px;
+  background-color: #1d7dfa;
+  border-radius: 2px;
+}
+
+/* ==================== 三级标题 ==================== */
+h3 {
+  margin: 16px 0 10px 0;
+  color: #333333;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+/* ==================== 四级标题 ==================== */
+h4 {
+  margin: 12px 0 8px 0;
+  color: #1d7dfa;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* ==================== 五级标题 ==================== */
+h5 {
+  display: inline-block;
+  margin: 12px 0 8px 0;
+  color: #333333;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* ==================== 六级标题 ==================== */
+h6 {
+  margin: 12px 0 8px 0;
+  color: #666666;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ==================== 段落 ==================== */
+p {
+  margin: 16px 0;
+  letter-spacing: 0.05em;
+  color: #333333;
+  line-height: 1.8;
+  font-size: 15px;
+  font-weight: 400;
+  word-break: break-all;
+}
+
+/* ==================== 引用块 ==================== */
+blockquote {
+  font-style: normal;
+  padding: 12px 16px;
+  margin: 16px 0;
+  border-left: 4px solid #1d7dfa;
+  background-color: #f7f9fc;
+  border-radius: 4px;
+  color: #666666;
+  font-size: 14px;
+}
+
+blockquote > p {
+  margin: 0;
+  color: #666666;
+}
+
+/* ==================== 代码块 ==================== */
+pre.code__pre,
+.hljs.code__pre {
+  font-size: 85%;
+  overflow-x: auto;
+  border-radius: 6px;
+  padding: 12px;
+  line-height: 1.5;
+  margin: 16px 0;
+  background-color: #f6f8fa;
+  border: 1px solid #ebedf0;
+}
+
+/* ==================== 图片 ==================== */
+img {
+  display: block;
+  max-width: 100%;
+  margin: 16px auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ==================== 列表 ==================== */
+ol {
+  padding-left: 1.5em;
+  margin: 16px 0;
+  color: #333333;
+  line-height: 1.8;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 1.5em;
+  margin: 16px 0;
+  color: #333333;
+  line-height: 1.8;
+}
+
+li {
+  display: list-item;
+  margin: 8px 0;
+  color: #333333;
+  text-align: left;
+}
+
+/* ==================== 分隔线 ==================== */
+hr {
+  border: none;
+  border-top: 1px solid #e8e8e8;
+  margin: 24px 0;
+}
+
+/* ==================== 行内代码 ==================== */
+code {
+  font-size: 90%;
+  color: #1d7dfa;
+  background: rgba(29, 125, 250, 0.06);
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin: 0 2px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+/* 代码块内的 code 标签需要特殊处理（覆盖行内 code 样式） */
+pre.code__pre > code,
+.hljs.code__pre > code {
+  color: inherit;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ==================== 强调 ==================== */
+em {
+  font-style: italic;
+  color: #333333;
+}
+
+/* ==================== 链接 ==================== */
+a {
+  color: #1d7dfa;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(29, 125, 250, 0.3);
+  padding-bottom: 1px;
+}
+
+/* ==================== 粗体 ==================== */
+strong {
+  color: #333333;
+  font-weight: 600;
+}
+
+/* ==================== 表格 ==================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+  color: #333333;
+}
+
+thead {
+  font-weight: bold;
+  background-color: #f7f9fc;
+}
+
+th {
+  border: 1px solid #ebedf0;
+  padding: 10px 16px;
+  color: #333333;
+  text-align: left;
+}
+
+td {
+  border: 1px solid #ebedf0;
+  padding: 10px 16px;
+  color: #333333;
+}
+
+/* ==================== 图表标题 ==================== */
+figcaption,
+.md-figcaption {
+  text-align: center;
+  color: #999999;
+  font-size: 12px;
+  margin-top: -8px;
+  margin-bottom: 16px;
+}
+
+/* GFM Alert SVG 图标颜色 (使用科技蓝调) */
+.alert-icon-note { fill: #1d7dfa; }
+.alert-title-note { color: #1d7dfa; }
