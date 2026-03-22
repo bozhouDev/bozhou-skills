@@ -10,10 +10,10 @@ Validate all 6 dimensions + aspect ratio.
 |-----------|-------------------|-------------|
 | `--quick` flag | Type, Palette, Rendering, Text, Mood, Font | **Aspect Ratio** (unless `--aspect` specified) |
 | All 6 dimensions + `--aspect` specified | All | None |
-| `quick_mode: true` in EXTEND.md | Type, Palette, Rendering, Text, Mood, Font | **Aspect Ratio** (unless `--aspect` specified) |
+| `quick_mode: true` in config.yaml | Type, Palette, Rendering, Text, Mood, Font | **Aspect Ratio** (unless `--aspect` specified) |
 | Otherwise | None | All 7 questions |
 
-**Important**: Aspect ratio is ALWAYS asked unless explicitly specified via `--aspect` CLI flag. User presets in EXTEND.md are shown as recommended option, not auto-selected.
+**Important**: Aspect ratio is ALWAYS asked unless explicitly specified via `--aspect` CLI flag. User presets in config.yaml are shown as recommended option, not auto-selected.
 
 ## Quick Mode Output
 

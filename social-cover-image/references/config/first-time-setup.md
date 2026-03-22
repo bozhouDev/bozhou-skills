@@ -7,7 +7,7 @@ description: First-time setup flow for social-cover-image preferences
 
 ## Overview
 
-When no EXTEND.md is found, guide user through preference setup.
+When no config.yaml is found, guide user through preference setup.
 
 **⛔ BLOCKING OPERATION**: This setup MUST complete before ANY other workflow steps. Do NOT:
 - Ask about reference images
@@ -15,12 +15,12 @@ When no EXTEND.md is found, guide user through preference setup.
 - Ask about dimensions (type, palette, rendering)
 - Proceed to content analysis
 
-ONLY ask the questions in this setup flow, save EXTEND.md, then continue.
+ONLY ask the questions in this setup flow, save config.yaml, then continue.
 
 ## Setup Flow
 
 ```
-No EXTEND.md found
+No config.yaml found
         │
         ▼
 ┌─────────────────────┐
@@ -30,7 +30,7 @@ No EXTEND.md found
         │
         ▼
 ┌─────────────────────┐
-│ Create EXTEND.md    │
+│ Create config.yaml    │
 └─────────────────────┘
         │
         ▼
@@ -50,7 +50,7 @@ header: "Watermark"
 question: "Watermark text for generated cover images?"
 options:
   - label: "No watermark (Recommended)"
-    description: "Clean covers, can enable later in EXTEND.md"
+    description: "Clean covers, can enable later in config.yaml settings"
 ```
 
 ### Question 2: Preferred Type
@@ -124,12 +124,12 @@ Platform guidance: WeChat public account article headers use `2.35:1`. X headers
 header: "Output"
 question: "Default output directory for cover images?"
 options:
-  - label: "Independent (Recommended)"
-    description: "cover-image/{topic-slug}/ - separate from article"
+  - label: "imgs subdirectory (Recommended)"
+    description: "{article-dir}/imgs/{article-title}/ - organized by article"
   - label: "Same directory"
     description: "{article-dir}/ - alongside the article file"
-  - label: "imgs subdirectory"
-    description: "{article-dir}/imgs/ - images folder near article"
+  - label: "Independent"
+    description: "cover-image/{topic-slug}/ - separate from article"
 ```
 
 ### Question 7: Quick Mode
@@ -144,37 +144,20 @@ options:
     description: "Skip confirmation, use auto-selection"
 ```
 
-### Question 8: Save Location
+## Save Location
 
-```yaml
-header: "Save"
-question: "Where to save preferences?"
-options:
-  - label: "Project (Recommended)"
-    description: ".my-tools/ (this project only)"
-  - label: "User"
-    description: "~/.my-tools/ (all projects)"
-```
-
-## Save Locations
-
-| Choice | Path | Scope |
-|--------|------|-------|
-| Project | `.my-tools/social-cover-image/EXTEND.md` | Current project |
-| User | `~/.my-tools/social-cover-image/EXTEND.md` | All projects |
+Preferences are saved to: `.claude/skills/social-cover-image/config.yaml`
 
 ## After Setup
 
-1. Create directory if needed
-2. Write EXTEND.md with frontmatter
-3. Confirm: "Preferences saved to [path]"
-4. Continue to Step 1
+1. Write config.yaml
+2. Confirm: "Preferences saved to .claude/skills/social-cover-image/config.yaml"
+3. Continue to Step 1
 
-## EXTEND.md Template
+## config.yaml Template
 
 ```yaml
----
-version: 3
+version: 4
 watermark:
   enabled: [true/false]
   content: "[user input or empty]"
@@ -186,18 +169,17 @@ preferred_rendering: [selected rendering or null]
 preferred_text: title-only
 preferred_mood: balanced
 default_aspect: [16:9/2.35:1/1:1/3:4]
-default_output_dir: [independent/same-dir/imgs-subdir]
+default_output_dir: [imgs-subdir/same-dir/independent]
 quick_mode: [true/false]
 language: null
 custom_palettes: []
----
 ```
 
 ## Modifying Preferences Later
 
-Users can edit EXTEND.md directly or run setup again:
-- Delete EXTEND.md to trigger setup
-- Edit YAML frontmatter for quick changes
+Users can edit config.yaml directly or run setup again:
+- Delete config.yaml to trigger setup
+- Edit YAML values for quick changes
 - Full schema: `preferences-schema.md`
 
-**EXTEND.md Supports**: Watermark | Preferred type | Preferred palette | Preferred rendering | Preferred text | Preferred mood | Default aspect ratio | Default output directory | Quick mode | Custom palette definitions | Language preference
+**config.yaml Supports**: Watermark | Preferred type | Preferred palette | Preferred rendering | Preferred text | Preferred mood | Default aspect ratio | Default output directory | Quick mode | Custom palette definitions | Language preference

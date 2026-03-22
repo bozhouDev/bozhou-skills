@@ -1,6 +1,6 @@
 ---
 name: preferences-schema
-description: EXTEND.md YAML schema for social-cover-image user preferences
+description: config.yaml schema for social-cover-image user preferences
 ---
 
 # Preferences Schema
@@ -8,8 +8,7 @@ description: EXTEND.md YAML schema for social-cover-image user preferences
 ## Full Schema
 
 ```yaml
----
-version: 3
+version: 4
 
 watermark:
   enabled: false
@@ -28,6 +27,8 @@ preferred_mood: balanced    # subtle|balanced|bold
 
 default_aspect: "2.35:1"  # 2.35:1|16:9|1:1
 
+default_output_dir: imgs-subdir  # imgs-subdir|same-dir|independent
+
 quick_mode: false         # Skip confirmation when true
 
 language: null            # zh|en|ja|ko|auto (null = auto-detect)
@@ -41,14 +42,13 @@ custom_palettes:
       accents: ["#00B4D8"]
     decorative_hints: "Clean lines, geometric shapes"
     best_for: "Business, tech content"
----
 ```
 
 ## Field Reference
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
-| `version` | int | 3 | Schema version |
+| `version` | int | 4 | Schema version |
 | `watermark.enabled` | bool | false | Enable watermark |
 | `watermark.content` | string | "" | Watermark text (@username or custom) |
 | `watermark.position` | enum | bottom-right | Position on image |
@@ -151,8 +151,7 @@ Platform guidance:
 ## Example: Minimal Preferences
 
 ```yaml
----
-version: 3
+version: 4
 watermark:
   enabled: true
   content: "@myhandle"
@@ -161,15 +160,14 @@ preferred_palette: elegant
 preferred_rendering: hand-drawn
 preferred_text: title-only
 preferred_mood: balanced
+default_output_dir: imgs-subdir
 quick_mode: false
----
 ```
 
 ## Example: Full Preferences
 
 ```yaml
----
-version: 3
+version: 4
 watermark:
   enabled: true
   content: "myblog.com"
@@ -187,6 +185,8 @@ preferred_mood: subtle
 
 default_aspect: "16:9"
 
+default_output_dir: imgs-subdir
+
 quick_mode: true
 
 language: en
@@ -200,14 +200,13 @@ custom_palettes:
       accents: ["#00B4D8", "#48CAE4"]
     decorative_hints: "Clean lines, subtle gradients, circuit patterns"
     best_for: "SaaS, enterprise, technical"
----
 ```
 
 ## Migration from v2
 
 When loading v2 schema, auto-upgrade:
 
-| v2 Field | v3 Field | Migration |
+| v2 Field | v4 Field | Migration |
 |----------|----------|-----------|
 | `version: 2` | `version: 3` | Update |
 | `preferred_style` | `preferred_palette` + `preferred_rendering` | Use preset mapping table |
@@ -215,7 +214,7 @@ When loading v2 schema, auto-upgrade:
 
 **Style → Palette + Rendering mapping**:
 
-| v2 `preferred_style` | v3 `preferred_palette` | v3 `preferred_rendering` |
+| v2 `preferred_style` | v4 `preferred_palette` | v4 `preferred_rendering` |
 |----------------------|----------------------|-------------------------|
 | `elegant` | `elegant` | `hand-drawn` |
 | `blueprint` | `cool` | `digital` |
@@ -240,7 +239,7 @@ When loading v2 schema, auto-upgrade:
 
 **Custom style migration**:
 
-| v2 Field | v3 Field |
+| v2 Field | v4 Field |
 |----------|----------|
 | `custom_styles[].name` | `custom_palettes[].name` |
 | `custom_styles[].description` | `custom_palettes[].description` |
@@ -251,9 +250,9 @@ When loading v2 schema, auto-upgrade:
 
 ## Migration from v1
 
-When loading v1 schema, auto-upgrade to v3:
+When loading v1 schema, auto-upgrade to v4:
 
-| v1 Field | v3 Field | Default Value |
+| v1 Field | v4 Field | Default Value |
 |----------|----------|---------------|
 | (missing) | `version` | 3 |
 | (missing) | `preferred_palette` | null |
