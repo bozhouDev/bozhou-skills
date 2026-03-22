@@ -23,43 +23,6 @@ Converts Markdown files to beautifully styled HTML with inline CSS, optimized fo
 |--------|---------|
 | `scripts/main.ts` | Main entry point |
 
-## Preferences (EXTEND.md)
-
-Check EXTEND.md existence (priority order):
-
-```bash
-# macOS, Linux, WSL, Git Bash
-test -f .my-tools/wechat-markdown-editor/EXTEND.md && echo "project"
-test -f "${XDG_CONFIG_HOME:-$HOME/.config}/wechat-markdown-editor/EXTEND.md" && echo "xdg"
-test -f "$HOME/.my-tools/wechat-markdown-editor/EXTEND.md" && echo "user"
-```
-
-```powershell
-# PowerShell (Windows)
-if (Test-Path .my-tools/wechat-markdown-editor/EXTEND.md) { "project" }
-$xdg = if ($env:XDG_CONFIG_HOME) { $env:XDG_CONFIG_HOME } else { "$HOME/.config" }
-if (Test-Path "$xdg/wechat-markdown-editor/EXTEND.md") { "xdg" }
-if (Test-Path "$HOME/.my-tools/wechat-markdown-editor/EXTEND.md") { "user" }
-```
-
-┌──────────────────────────────────────────────────────────────┬───────────────────┐
-│                             Path                             │     Location      │
-├──────────────────────────────────────────────────────────────┼───────────────────┤
-│ .my-tools/wechat-markdown-editor/EXTEND.md               │ Project directory │
-├──────────────────────────────────────────────────────────────┼───────────────────┤
-│ $HOME/.my-tools/wechat-markdown-editor/EXTEND.md         │ User home         │
-└──────────────────────────────────────────────────────────────┴───────────────────┘
-
-┌───────────┬───────────────────────────────────────────────────────────────────────────┐
-│  Result   │                                  Action                                   │
-├───────────┼───────────────────────────────────────────────────────────────────────────┤
-│ Found     │ Read, parse, apply settings                                               │
-├───────────┼───────────────────────────────────────────────────────────────────────────┤
-│ Not found │ Use defaults                                                              │
-└───────────┴───────────────────────────────────────────────────────────────────────────┘
-
-**EXTEND.md Supports**: Default theme | Custom CSS variables | Code block style
-
 ## Workflow
 
 ### Step 0: Pre-check (Chinese Content)
@@ -85,35 +48,9 @@ Use `AskUserQuestion` to ask whether to format first. Formatting can fix:
 
 ### Step 1: Determine Theme
 
-**Theme resolution order** (first match wins):
-1. User explicitly specified theme (CLI `--theme` or conversation)
-2. EXTEND.md `default_theme` (this skill's own EXTEND.md, checked in Step 0)
-3. `post-to-wechat` EXTEND.md `default_theme` (cross-skill fallback)
-4. If none found → use AskUserQuestion to confirm
+**Default theme**: `bytedance` (字节范)
 
-**Cross-skill EXTEND.md check** (only if this skill's EXTEND.md has no `default_theme`):
-
-```bash
-# Check post-to-wechat EXTEND.md for default_theme
-test -f "$HOME/.my-tools/post-to-wechat/EXTEND.md" && grep -o 'default_theme:.*' "$HOME/.my-tools/post-to-wechat/EXTEND.md"
-```
-
-```powershell
-# PowerShell (Windows)
-if (Test-Path "$HOME/.my-tools/post-to-wechat/EXTEND.md") { Select-String -Pattern 'default_theme:.*' -Path "$HOME/.my-tools/post-to-wechat/EXTEND.md" | ForEach-Object { $_.Matches.Value } }
-```
-
-**If theme is resolved from EXTEND.md**: Use it directly, do NOT ask the user.
-
-**If no default found**: Use AskUserQuestion to confirm:
-
-| Theme | Description |
-|-------|-------------|
-| `default` (Recommended) | Classic - traditional layout, centered title with bottom border, H2 with white text on colored background |
-| `grace` | Elegant - text shadow, rounded cards, refined blockquotes |
-| `simple` | Minimal - modern minimalist, asymmetric rounded corners, clean whitespace |
-| `modern` | Modern - large radius, pill-shaped titles, relaxed line height (pair with `--color red` for traditional red-gold style) |
-| `bytedance` | ByteDance (字节范) - technological and modern blue style |
+If the user explicitly specifies a different theme via CLI `--theme` or in conversation, use that instead. Otherwise always use `bytedance`.
 
 ### Step 1.5: Determine Citation Mode
 
@@ -146,7 +83,7 @@ ${BUN_X} {baseDir}/scripts/main.ts <markdown_file> [options]
 
 | Option | Description | Default |
 |--------|-------------|---------|
-| `--theme <name>` | Theme name (default, grace, simple, modern, bytedance) | default |
+| `--theme <name>` | Theme name (default, grace, simple, modern, bytedance) | bytedance |
 | `--color <name\|hex>` | Primary color: preset name or hex value | theme default |
 | `--font-family <name>` | Font: sans, serif, serif-cjk, mono, or CSS value | theme default |
 | `--font-size <N>` | Font size: 14px, 15px, 16px, 17px, 18px | 16px |
@@ -266,6 +203,3 @@ description: 专业的微信公众号排版工具。将 Markdown 转换为带样
 
 If no title is found, extracts from first H1/H2 heading or uses filename.
 
-## Extension Support
-
-Custom configurations via EXTEND.md. See **Preferences** section for paths and supported options.
